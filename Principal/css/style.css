@@ -65,6 +65,36 @@ body{
   align-items: center;
   gap: 1em;
 }
+#sidebar svg{
+  flex-shrink: 0;
+  fill: var(--text-clr);
+}
+#sidebar a span, #sidebar .dropdown-btn span{
+  flex-grow: 1;  // coloca os elementos nos cantos.
+}
+#sidebar a:hover, #sidebar .dropdown-btn:hover{
+  background-color: var(--hover-clr);
+}
+#sidebar .sub-menu{
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 300ms ease-in-out;
+  >div {
+    overflow: hidden;
+  }
+}
+#sidebar .sub-menu a{
+  padding-left: 2em;
+}
+#sidebar .sub-menu.show{
+  grid-template-rows: 1fr;
+}
+.rotate svg:last-child{
+  rotate: 180deg;
+}
+.dropdown-btn svg{
+  transition: 200ms ease;
+}
 .dropdown-btn{
   width:100%;
   text-align: left;
@@ -73,18 +103,40 @@ body{
   font: inherit;
   cursor: pointer;
 }
+#toggle-btn{
+  margin-left: auto;
+  padding: 1em;
+  border:none;
+  border-radius: .5em;
+  background: none;
+  cursor: pointer;
+
+  svg{
+    transition: 150ms ease;
+  }
+}
+#toggle-btn:hover{
+  background-color: var(--hover-clr);
+}
 
 main {
-  padding: min(30px, 7%);
+  padding: min(20px, 7%);
 }
-mais p{
+main p{
   color: var(--secondary-text-clr);
   margin-top: 5px;
   margin-bottom: 15px;
 }
 .container{
+  margin-top: 1em;
   border: 1px solid var(--line-clr);
   border-radius: 1em;
   margin-bottom: 20px
   padding:  min(3em, 15%);
+
+  h2, p { 
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+  };
 }

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
   <link rel="stylesheet" href="./css/style.css">
+  <script type="text/javascript" src="./js/javaScript.js" defer></script>
 </head>
 <body>
   <nav id="sidebar">
@@ -12,7 +13,7 @@
       <li>
         <span class="logo">JaPedidos</span>
         <button id="toggle-btn">
-          <img src="./imagens/logo_0_5x.png"  width="24" alt="">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M460-320v-320L300-480l160 160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm440-80h120v-560H640v560Zm-80 0v-560H200v560h360Zm80 0h120-120Z"/></svg>
         </button>
       </li>
       <li class="active">
@@ -21,14 +22,16 @@
           <span>Dashboard</span></a>
       </li>
       <li>
-        <button class="dropdown-btn">
+        <button onclick="toggleSubMenu(this)" class="dropdown-btn">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-320h80v-80h80v-80h-80v-80h-80v80h-80v80h80v80ZM160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Zm0-80h640v-400H447l-80-80H160v480Zm0 0v-480 480Z"/></svg>
           <span>Cadastrar</span>
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-345 240-585l56-56 184 183 184-183 56 56-240 240Z"/></svg>
         </button> 
         <ul class="sub-menu">
-          <li><a href="#">Cliente</a></li>
-          <li><a href="#">Produto</a></li>
+          <div>
+            <li><a href="#">Cliente</a></li>
+            <li><a href="#">Produto</a></li>
+          </div>
         </ul>
       </li>
       <li >
@@ -70,7 +73,7 @@
     </div>
     <div class="container">
       <h2>Ola3</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, aliquid voluptatum praesentium fugiat ipsam cum similique nesciunt libero in sunt dolorum hic nulla error quasi saepe dignissimos illo amet qui?</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, aliquid voluptatum praesentium fugiat ipsam cum similique nesciunt libero in sunt dolorum hic nulla error quasi saepe dignissimos illo amet qui? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil culpa temporibus, accusamus recusandae doloremque similique provident aperiam nulla laboriosam quas dignissimos eum error nobis? Doloribus, quia. Quam ipsam earum libero? Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae consequatur assumenda quaerat, libero obcaecati inventore aut distinctio reiciendis sint? Officia quasi repellendus, eaque ea a sunt minima magnam expedita fugit.</p>
     </div>
   </main>
 </body>
