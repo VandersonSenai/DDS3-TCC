@@ -38,7 +38,9 @@ body{
   top: 0;
   align-self: start;
   transition: 300ms ease-in-out;
+  text-wrap: nowrap;
   overflow: hidden; // esconde o conteudo que excede ao tamanho do elemento.
+  
 }
 #sidebar.close {
   padding: 5px;
