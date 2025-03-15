@@ -1,9 +1,11 @@
-const toggleButton = document.getElementById('toggle-btn')
+const toggleButton = document.getElementById('dropdown-btn')
 const sidebar = document.getElementById('sidebar')
 
 function toggleSidebar(){
   sidebar.classList.toggle('close');
-  toggleButton.classList.toggle('rotate');
+  sidebar.classList.toggle('rotate');
+  //toggleButton.classList.toggle('rotate');
+
   // Array.from(sidebar.getElementsByClassName('show')).forEach(ul =>{
   //   ul.classList.remove('show');
   //   ul.prevElementSibling.classList.remove('rotate');
@@ -30,6 +32,7 @@ function toggleSubMenu(button){
 function closeAllSubMenus(){
   Array.from(sidebar.getElementsByClassName('show')).forEach(ul =>{
     ul.classList.remove('show');
-    ul.prevElementSibling.classList.remove('rotate');
+    // ul.prevElementSibling.classList.remove('rotate');
+    toggleButton.classList.toggle('rotate');    
   });
 }
