@@ -8,7 +8,7 @@ function toggleSidebar(){
   toggleButton.classList.toggle('rotate')
 
   closeAllSubMenus()
-  
+    
 }
 
 function toggleSubMenu(button){
@@ -33,3 +33,4 @@ function closeAllSubMenus(){
     ul.previousElementSibling.classList.remove('rotate')
   });
 }
+
