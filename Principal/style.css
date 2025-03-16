@@ -101,22 +101,19 @@ body {
   background-color: var(--hover-clr);
 }
 
-/* faz o submenu encolher de forma automatica na ausencia da classe SHOW */
 #sidebar .sub-menu{
   display:grid;
-  grid-template-rows: 0fr; /* define altura inicial das linhas em 0 fracao - fechando o submenu*/
+  grid-template-rows: 0fr; 
   transition: 300ms ease-in-out;
 
   > div {
     overflow: hidden; 
-    /* esconder a div se ficar pequena */
+    
   }
 }
 
-/* faz o submenu aparece de forma automatica quando recebe a classe SHOW */
 #sidebar .sub-menu.show{
   grid-template-rows: 1fr; 
-  /* define altura de forma automatica das linhas em 1 fracao - abrindo o submenu*/
 }
 .dropdown-btn svg{
   transition: 150ms ease-in-out;
@@ -138,7 +135,6 @@ body {
   cursor: pointer;
   background: none;
 
-  /* transition: 150ms ease-in-out; */
   svg{
 
     transition: 150ms ease;
