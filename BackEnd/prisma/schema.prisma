@@ -1,0 +1,203 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model categoria {
+  id        Int       @id @default(autoincrement())
+  nome      String    @db.VarChar(24)
+  descricao String?   @db.VarChar(120)
+  produto   produto[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model cliente {
+  id             Int       @id @default(autoincrement())
+  nome           String    @db.VarChar(80)
+  telefone       String    @unique(map: "telefone") @db.VarChar(20)
+  id_usuario_alt Int?
+  dthr_alt       DateTime? @db.DateTime(0)
+  usuario        usuario?  @relation(fields: [id_usuario_alt], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "cliente_ibfk_1")
+  pedido         pedido[]
+
+  @@index([id_usuario_alt], map: "id_usuario_alt")
+}
+
+model destinatario {
+  id_pedido Int    @id
+  info      String @db.VarChar(120)
+  pedido    pedido @relation(fields: [id_pedido], references: [id], onUpdate: Restrict, map: "destinatario_ibfk_1")
+}
+
+model destino {
+  id_pedido  Int    @id
+  logradouro String @db.VarChar(45)
+  numero     String @db.VarChar(20)
+  bairro     String @db.VarChar(45)
+  cidade     String @db.VarChar(45)
+  estado     String @db.VarChar(45)
+  pais       String @db.VarChar(45)
+  pedido     pedido @relation(fields: [id_pedido], references: [id], onUpdate: Restrict, map: "destino_ibfk_1")
+}
+
+model est_andamento {
+  id                   Int                    @id @default(autoincrement())
+  nome                 String                 @db.VarChar(24)
+  est_andamento_pedido est_andamento_pedido[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model est_andamento_pedido {
+  id_est_andamento Int
+  id_pedido        Int
+  id_usuario_autor Int
+  dthr_criacao     DateTime      @default(now())
+  pedido           pedido        @relation(fields: [id_pedido], references: [id], onUpdate: Restrict, map: "est_andamento_pedido_ibfk_1")
+  est_andamento    est_andamento @relation(fields: [id_est_andamento], references: [id], onUpdate: Restrict, map: "est_andamento_pedido_ibfk_2")
+
+  @@id([id_est_andamento, id_pedido])
+  @@index([id_pedido], map: "id_pedido")
+}
+
+model info_cancelamento {
+  id_pedido     Int    @id
+  justificativa String @db.VarChar(120)
+  pedido        pedido @relation(fields: [id_pedido], references: [id], onUpdate: Restrict, map: "info_cancelamento_ibfk_1")
+}
+
+model info_pagamento {
+  id_pedido     Int       @id
+  dt_vencimento DateTime? @db.Date
+  dt_pago       DateTime? @db.Date
+  pedido        pedido    @relation(fields: [id_pedido], references: [id], onUpdate: Restrict, map: "info_pagamento_ibfk_1")
+}
+
+model info_pf {
+  id_pedido    Int    @id
+  nome_cliente String @db.VarChar(45)
+  cpf          String @db.VarChar(11)
+  pedido       pedido @relation(fields: [id_pedido], references: [id], onUpdate: Restrict, map: "info_pf_ibfk_1")
+}
+
+model info_pj {
+  id_pedido        Int    @id
+  cnpj             String @db.VarChar(20)
+  nome_fantasia    String @db.VarChar(60)
+  nome_empresarial String @db.VarChar(60)
+  pedido           pedido @relation(fields: [id_pedido], references: [id], onUpdate: Restrict, map: "info_pj_ibfk_1")
+}
+
+model intercorrencia {
+  id_intercorrencia Int
+  id_pedido         Int
+  descricao         String   @db.VarChar(200)
+  dthr_criacao      DateTime @default(now()) @db.DateTime(0)
+  id_usuario_autor  Int
+  pedido            pedido   @relation(fields: [id_pedido], references: [id], onUpdate: Restrict, map: "intercorrencia_ibfk_1")
+  usuario           usuario  @relation(fields: [id_usuario_autor], references: [id], onUpdate: Restrict, map: "intercorrencia_ibfk_2")
+
+  @@id([id_intercorrencia, id_pedido, id_usuario_autor])
+  @@index([id_pedido], map: "id_pedido")
+  @@index([id_usuario_autor], map: "id_usuario_autor")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model pedido {
+  ///id                   Int                    @default(autoincrement())
+  id                   Int                    @id @default(autoincrement())
+  id_cliente           Int
+  id_usuario_autor     Int
+  dthr_criacao         DateTime               @default(now()) @db.DateTime(0)
+  id_usuario_alt       Int?
+  dthr_alt             DateTime?              @db.DateTime(0)
+  tipo_entrega         pedido_tipo_entrega
+  dthr_entregar        DateTime               @db.DateTime(0)
+  preco_frete          Decimal                @default(0.00) @db.Decimal(8, 2)
+  tx_desconto          Int                    @default(0)
+  preco_final          Decimal                @db.Decimal(10, 2)
+  dt_venc_pagamento    DateTime?              @db.Date
+  dt_pago              DateTime?              @db.Date
+  preco_custo_total    Decimal                @db.Decimal(8, 2)
+  destinatario         destinatario?
+  destino              destino?
+  est_andamento_pedido est_andamento_pedido[]
+  info_cancelamento    info_cancelamento?
+  info_pagamento       info_pagamento?
+  info_pf              info_pf?
+  info_pj              info_pj?
+  intercorrencia       intercorrencia[]
+  cliente              cliente                @relation(fields: [id_cliente], references: [id], onUpdate: Restrict, map: "pedido_ibfk_1")
+  produto_pedido       produto_pedido[]
+
+  //@@id([id, id_cliente])
+  @@index([id_cliente], map: "id_cliente")
+}
+
+model produto {
+  ///id             Int              @default(autoincrement())
+  id             Int              @id @default(autoincrement())
+  id_categoria   Int
+  id_unidade     Int
+  nome           String           @db.VarChar(32)
+  preco_venda    Decimal          @default(0.00) @db.Decimal(8, 2)
+  preco_custo    Decimal          @default(0.00) @db.Decimal(8, 2)
+  id_usuario_alt Int?
+  dthr_alt       DateTime?        @db.DateTime(0)
+  estado         Boolean          @default(dbgenerated("(b'1')")) @db.Bit(1)
+  categoria      categoria        @relation(fields: [id_categoria], references: [id], onUpdate: Restrict, map: "produto_ibfk_1")
+  unidade        unidade          @relation(fields: [id_unidade], references: [id], onUpdate: Restrict, map: "produto_ibfk_2")
+  usuario        usuario?         @relation(fields: [id_usuario_alt], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "produto_ibfk_3")
+  produto_pedido produto_pedido[]
+
+  ///@@id([id, id_unidade, id_categoria])
+  @@index([id_categoria], map: "id_categoria")
+  @@index([id_unidade], map: "id_unidade")
+  @@index([id_usuario_alt], map: "id_usuario_alt")
+}
+
+model produto_pedido {
+  id_produto     Int
+  id_pedido      Int
+  quantidade     Int
+  preco_venda    Decimal @db.Decimal(8, 2)
+  preco_custo    Decimal @db.Decimal(8, 2)
+  info_adicional String? @db.VarChar(45)
+  pedido         pedido  @relation(fields: [id_pedido], references: [id], onUpdate: Restrict, map: "produto_pedido_ibfk_1")
+  produto        produto @relation(fields: [id_produto], references: [id], onUpdate: Restrict, map: "produto_pedido_ibfk_2")
+
+  @@id([id_produto, id_pedido])
+  @@index([id_pedido], map: "id_pedido")
+}
+
+model unidade {
+  id         Int       @id @default(autoincrement())
+  nome       String    @db.VarChar(16)
+  abreviacao String    @db.Char(5)
+  produto    produto[]
+}
+
+model usuario {
+  id             Int              @id @default(autoincrement())
+  nome           String           @db.VarChar(48)
+  login          String           @unique(map: "login") @db.VarChar(20)
+  senha          String           @db.VarChar(32)
+  tipo           usuario_tipo
+  cliente        cliente[]
+  intercorrencia intercorrencia[]
+  produto        produto[]
+}
+
+enum usuario_tipo {
+  administrador
+  atendente
+}
+
+enum pedido_tipo_entrega {
+  ENVIO
+  RETIRADA
+}
