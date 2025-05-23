@@ -47,7 +47,7 @@ body {
   top:0;
   align-self: start;
 
-  transition: 150ms ease-in-out;
+  transition: 300ms ease-in-out;
   overflow: hidden;
   text-wrap: nowrap;
 }
