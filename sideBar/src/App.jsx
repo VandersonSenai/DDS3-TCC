@@ -1,5 +1,5 @@
 import './App.css'
-import Sidebar from './components/Sidebar';
+import SideBar from './components/SideBar';
 
 function App() {
   
@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <div>
-        <Sidebar />
+        <SideBar />
       </div>
     </>
   )

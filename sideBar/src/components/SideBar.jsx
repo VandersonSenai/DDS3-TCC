@@ -1,6 +1,10 @@
 // Sidebar.jsx
 import React, { useEffect } from "react";
-import styles from "./Sidebar.module.css"; // convertendo style.css para CSS module (ou importe como global se preferir)
+
+// na verdade vou usar no geral por conta das demais definições
+// talvez deixe separado a estilização , por hora fica no geral do projeto
+import styles from "./Sidebar.module.css"; 
+
 import { useLocation } from "react-router-dom";
 
 export default function Sidebar() {
@@ -77,7 +81,7 @@ export default function Sidebar() {
           </ul>
         </li>
 
-        {/* Continue com os outros itens conforme o seu HTML original */}
+        {/* Refefinir os proximos items e adcionar os svg`s igual no html */}
       </ul>
     </nav>
   );
