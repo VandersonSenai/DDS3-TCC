@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // na verdade vou usar no geral por conta das demais definições
 // talvez deixe separado a estilização , por hora fica no geral do projeto
