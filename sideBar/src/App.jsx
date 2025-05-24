@@ -1,12 +1,14 @@
-import './App.css'
+// import './App.css'
 import SideBar from './components/SideBar';
+
 
 function App() {
   
 
   return (
     <>
-      <div>
+      <div >
+        {/* Sidebar com REACT */}
         <SideBar />
       </div>
     </>

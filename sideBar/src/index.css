@@ -5,8 +5,25 @@
   --line-clr: #42434a;
   --hover-clr: #222533;
   --text-clr: #e6e6ef;
-  --accent-clr: #5e63ff;
   --secondary-text-clr: #b0b3c1;
+  --accent-clr: #5e63ff;
+  --accent-blue: #5E63FF;
+  --accent-blue-dark: #3F43B7;
+  --accent-blue-light: #AACCCC;
+  --accent-green: #1dd16a;
+  --accent-red-dark: #119956;
+  --accent-red-light: #5FF59B;
+  --accent-red: #ff5e5e;
+  --accent-red-dark: #cc3a3a;
+  --accent-red-light: #ff9e9e;
+  --accent-yellow: #ffd54a;
+  --accent-yellow-dark: #E6B800;
+  --accent-yellow-light: #FFED99;
+
+  /* background-color: var(--clr-base-dark); */
+  -webkit-font-smoothing: antialiased;
+
+  
 }
 
 *{
