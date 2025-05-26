@@ -20,10 +20,7 @@
   --accent-yellow-dark: #E6B800;
   --accent-yellow-light: #FFED99;
 
-  /* background-color: var(--clr-base-dark); */
   -webkit-font-smoothing: antialiased;
-
-  
 }
 
 *{
@@ -43,7 +40,7 @@ body {
   grid-template-columns: auto 1fr;
 }
 
-.container{
+.containerSideBar{
   border: 1px solid var(--line-clr);
   border-radius: 1em;
   margin-bottom: 20px;
