@@ -5,6 +5,7 @@ const ContainerContent = ({ section }) => {
     <div className="container">
       <h2>Menu : {section}</h2>
       <p>Conteúdo dinâmico para: {section}</p>
+      <p>Segundo paragrafo</p>
     </div>
   );
 };
