@@ -16,6 +16,11 @@ const Sidebar = ({ onNavigate }) => {
     setOpenSubMenus({});
   };
 
+  const toggleActive = () => {
+    setIsActive(!isActive);
+    // setOpenSubMenus({});
+  };
+
   const toggleSubMenu = (menu) => {
     setOpenSubMenus((prev) => ({
       ...prev,
