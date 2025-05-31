@@ -9,11 +9,14 @@ function App() {
   return (
     <>
       <div className="app-body">
-          <nav>
+          <nav className="sidebar">
             <SideBar onNavigate={setSection} />
           </nav>
           <main>
-            <ComponenteTeste/>
+            <div className='container'>
+              <ComponenteTeste/>
+            </div>
+
           </main>
       </div>
     </>
