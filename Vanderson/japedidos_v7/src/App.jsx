@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Outlet } from "react-router-dom";
 
 import SideBar from "./components/SideBar";
 import ComponenteTeste from './components/ComponenteTeste';
@@ -14,7 +15,8 @@ function App() {
           </nav>
           <main>
             <div >
-              <ComponenteTeste/>
+              <Outlet />
+              {/* <ComponenteTeste/> */}
             </div>
 
           </main>

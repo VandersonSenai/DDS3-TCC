@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom"
+import App from "./App.jsx"
 
 // Páginas existentes:
-import App from "./App.jsx"
 import AdicionarCliente from "./pages/AdicionarCliente.jsx"
 import AdicionarProduto from "./pages/AdicionarProduto.jsx" 
 import EditarCliente from "./pages/EditarCliente.jsx"
@@ -14,9 +14,10 @@ import PaginaError from "./pages/PaginaError.jsx"
 import PedidosEmAberto from "./pages/PedidosEmAberto.jsx"
 import PedidosNovo from "./pages/PedidosNovo.jsx"
 import PedidosProcurar from "./pages/PedidosProcurar.jsx"
-import Relatorios from "./pages/Relatorios.jsx"
+import Relatorio from "./pages/Relatorio.jsx"
+import Configuracao from "./pages/Configuracao.jsx"
 
-const router = createBrowserRouter([
+const Router = createBrowserRouter([
     {
         path:"/",
         element:<App />,
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
         children:[
             {
                 path:"/",
-                element:<Login />
+                element:<Inicio />
             },
             {
                 path:"/login",
@@ -70,8 +71,16 @@ const router = createBrowserRouter([
                 path:"/pedidosprocurar/:status",
                 element:<PedidosProcurar />
             },
+            {
+                path:"/relatorio",
+                element:<Relatorio />
+            },
+            {
+                path:"/configuracao",
+                element:<Configuracao />
+            }
         ]
     }
 ])
 
-export default router;
+export default Router;
