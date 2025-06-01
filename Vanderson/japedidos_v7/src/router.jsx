@@ -11,7 +11,7 @@ import Inicio from "./pages/Inicio.jsx"
 import Login from "./pages/Login.jsx"
 import PaginaError from "./pages/PaginaError.jsx"
 
-import PedidosEmAndamento from "./pages/PedidosEmAndamento.jsx"
+import PedidosEmAberto from "./pages/PedidosEmAberto.jsx"
 import PedidosNovo from "./pages/PedidosNovo.jsx"
 import PedidosProcurar from "./pages/PedidosProcurar.jsx"
 import Relatorios from "./pages/Relatorios.jsx"
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
                 element:<AdicionarCliente/>
             },
             {
-                path:"/editarcliente",
+                path:"/editarcliente/:id",
                 element:<EditarCliente/>
             },
             {
@@ -51,8 +51,8 @@ const router = createBrowserRouter([
                 element:<EditarProduto />
             },
             {
-                path:"/pedidosemandamento",
-                element:<PedidosEmAndamento />
+                path:"/pedidosemaberto",
+                element:<PedidosEmAberto />
             },
             {
                 path:"/pedidosnovo",
@@ -60,6 +60,14 @@ const router = createBrowserRouter([
             },
             {
                 path:"/pedidosprocurar",
+                element:<PedidosProcurar />
+            },
+            {
+                path:"/pedidosprocurar/:id",
+                element:<PedidosProcurar />
+            },
+            {
+                path:"/pedidosprocurar/:status",
                 element:<PedidosProcurar />
             },
         ]

@@ -13,7 +13,7 @@ function App() {
             <SideBar onNavigate={setSection} />
           </nav>
           <main>
-            <div className='container'>
+            <div >
               <ComponenteTeste/>
             </div>
 

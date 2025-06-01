@@ -2,6 +2,11 @@
 
 html, body, #root {
   height: 100vh;
+
+  /* teste 2025-06-01 */
+  height: 100%;
+  /* margin:0; */
+
 }
 :root {
   --base-clr: #11121a;
@@ -39,8 +44,7 @@ html{
 }
 
 body {
-  nim-height: 100vh;
-  /* min-height: 100dvh; */
+  /* nim-height: 100vh; */
   background-color: var(--base-clr);
   color: var(--text-clr);
   display: grid;
@@ -53,17 +57,29 @@ body {
 .app-body {
   display: grid;
   grid-template-columns: auto 1fr;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   /* border: 1px solid red; */
+
+  /* teste 2025-06-01 */
+  height: 100vh;
+  /* overflow: hidden; */
   
 }
 
 .container{
-  
+    /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+
   border: 1px solid var(--line-clr);
   border-radius: 1em;
-  /* margin-bottom: 10px; */
-  /* min-height: 75vh; */
+  margin-bottom: 10px;
+  padding-top: 20px;
+  /* min-height: auto; */
+  
+
+  /* em telas maiores o conteudo ao ser centralizado precisa compensar o espaço utilizado pela barra lateral */
+  /* min-width: calc(100vw - 360px); */
   padding: min(2em, 15%);
 
   h2, p { margin-top: 1em}
@@ -71,16 +87,17 @@ body {
 
 #sidebar{
   box-sizing: border-box;
-  height: 100vh;
   width: 250px;
   padding: 10px 1em;
   background-color: var(--base-clr);
   border-right: 1px solid var(--line-clr);
   /* border: 2px solid red; */
-
+  
   position: sticky;
   top:0;
   align-self: start;
+  height: 100vh;
+  overflow-y: auto;
 
   transition: 300ms ease-in-out;
   overflow: hidden;
@@ -184,9 +201,14 @@ body {
 }
 
 main {
-  padding: min(30px, 7%);
-  margin-top : 50px;
-  max-height: 100vh;
+  /* centralizando conteudo do MAIN */
+ overflow-y: auto;
+  /* height: 100vh; */
+
+  padding: min(20px, 7%);
+  /* max-height: 100vh; */
+  /* margin-top : 0px; */
+    margin-top : 50px;
 }
 
 main p{

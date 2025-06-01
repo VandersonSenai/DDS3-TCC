@@ -1,9 +1,9 @@
 import React from 'react'
 
-const PedidosEmAndamento = () => {
+const PedidosEmAberto = () => {
   return (
     <div>PedidosEmAndamento</div>
   )
 }
 
-export default PedidosEmAndamento
+export default PedidosEmAberto
